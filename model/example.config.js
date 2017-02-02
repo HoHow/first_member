@@ -1,7 +1,7 @@
 var config ={
-  host     : 'localhost',
-  user     : 'oliver',
-  password : '123456',
-  database : 'node_project'
+  host     : 'xxx',
+  user     : 'xxx',
+  password : 'xxx',
+  database : 'xxx'
 }
 module.exports = config;
