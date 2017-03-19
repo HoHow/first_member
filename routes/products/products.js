@@ -7,11 +7,15 @@ var router       = express.Router();
 router.get('/',function(req, res){
   var page = req.query.page;
   const pageSize = 10;
-  console.log(page);
+
+  if(page === NaN || page === undefined){
+    page = 1;
+    
+  }
   connection.query('select * from products limit ?,?',[(page-1)*pageSize,pageSize],function(err,rows){
     if(err) throw err;
-    
-    res.json({data:rows});
+     
+    res.json(rows);
   });
 
 });

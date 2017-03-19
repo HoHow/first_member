@@ -13,9 +13,18 @@ var modify      = require('./routes/modify');
 var add         = require('./routes/add');
 var upload      = require('./routes/upload');
 var user        = require('./routes/user');
+var cart        = require('./routes/cart');
+var shoplist    = require('./routes/shoplist');
+var order       = require('./routes/order');
+var orderlist   = require('./routes/orderlist');
+var editorder   = require('./routes/editorder');
+var productitem = require('./routes/products/productitem');
+var cartitem    = require('./routes/cartitem');
+var report      = require('./routes/admin/monthreport');
+var delitem     = require('./routes/delitem');
 // product routes
 var product     = require('./routes/products/product');
-var app = express();
+var app         = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,9 +34,31 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Add headers
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+process.setMaxListeners(0);
+// emitter.setMaxListeners(0);
 
 app.use('/', index);
 app.use('/users', users);
@@ -35,8 +66,16 @@ app.use('/user/add', add);
 app.use('/user', modify);
 app.use('/upload',upload);
 app.use('/user',user);
-
+app.use('/cart',cart);
 app.use('/products',product);
+app.use('/shoplist',shoplist);
+app.use('/order',order);
+app.use('/orderlist',orderlist);
+app.use('/admin/report',report);
+app.use('/editorder',editorder);
+app.use('/item',productitem);
+app.use('/cartitem',cartitem);
+app.use('/delitem',delitem);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

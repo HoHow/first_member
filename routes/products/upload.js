@@ -26,10 +26,10 @@ router.put('/:id',upload.single('file'),function(req, res){
       });
 
       var data ={    
-        product_name:name,
+        name:name,
         description:description,
         price:price,
-        product_img:filename,
+        img:filename,
         updated_at:update_date
       };
 
