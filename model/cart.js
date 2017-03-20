@@ -35,25 +35,28 @@ function selectitem(item,callback){
 
   connection.query('select * from cart_item',function(err, result){
     if(err) throw err;
-
-    if(result.product_id != item.product_id){
+    
+    if(result.length == 0){
       //console.log("insert");
       connection.query('insert into cart_item set ?',item,function(err,result){
         if(err) throw err;
       });
       callback(null,"新增商品成功");
+    }else if(result[0].product_id == undefined || result[0].product_id != item.product_id){
+      connection.query('insert into cart_item set ?',item,function(err,result){
+        if(err) throw err;
+      }); 
+      callback(null,"新增商品成功");
+
     }else{
-      
-      result.map(function(obj){
-            
-            
-            if(obj.product_id == item.product_id){
-              var total = parseInt(obj.quantity) + parseInt(item.quantity);
-              connection.query('update cart_item set quantity= '+total+' where product_id= '+obj.product_id,function(err,result){
-                if(err) throw err;
-              });
-              callback(null,"更新商品成功");  
-            }
+      result.map(function(obj){    
+        if(obj.product_id == item.product_id){
+          var total = parseInt(obj.quantity) + parseInt(item.quantity);
+          connection.query('update cart_item set quantity= '+total+' where product_id= '+obj.product_id,function(err,result){
+            if(err) throw err;
+          });
+                  
+        }
       });   
     }
   });
