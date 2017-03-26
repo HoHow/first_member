@@ -4,9 +4,7 @@ var router        = express.Router();
 var controllerOrder         = require('../controller/order')
 
 var order = new controllerOrder();
-//router.post('/',order.orderList);
-router.post('/',function(req,res,next){
-  
-});
+router.post('/',order.orderList);
+
 
 module.exports = router;

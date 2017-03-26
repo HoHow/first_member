@@ -7,6 +7,6 @@ var order = new controllerOrder();
 
 
 
-router.post('/', order.editOrder);
+//router.post('/', order.editOrder);
 
 module.exports = router;
