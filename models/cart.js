@@ -1,4 +1,4 @@
-var connection  = require('../models/connect');
+var connection  = require('./connect');
 var async       = require('async');
 var knex        = require('../knexfile');
 var cartItem        = require('./cart_item');

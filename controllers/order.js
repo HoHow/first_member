@@ -56,6 +56,11 @@ module.exports = class controllerOrder {
     order.orderlist(memberID,res);
     
   }
+  cancelorder(req,res,next){
+    var orderid = req.query.orderid;
+
+    order.cancel(orderid,res);
+  }
   
 }
 

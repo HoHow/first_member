@@ -13,14 +13,18 @@ var modify      = require('./routes/modify');
 var add         = require('./routes/add');
 var upload      = require('./routes/upload');
 var user        = require('./routes/user');
+
+
+
 var cart        = require('./routes/cart');
 var order       = require('./routes/order');
-var orderlist   = require('./routes/orderlist');
-var editorder   = require('./routes/editorder');
+
+
 var productitem = require('./routes/products/productitem');
-var cartitem    = require('./routes/cartitem');
 var report      = require('./routes/admin/monthreport');
-var delitem     = require('./routes/delitem');
+
+
+var register    = require('./routes/register');
 // product routes
 var product     = require('./routes/products/product');
 var app         = express();
@@ -68,12 +72,10 @@ app.use('/user',user);
 app.use('/cart',cart);
 app.use('/products',product);
 app.use('/order',order);
-app.use('/orderlist',orderlist);
 app.use('/admin/report',report);
-app.use('/editorder',editorder);
 app.use('/item',productitem);
-app.use('/cartitem',cartitem);
-app.use('/delitem',delitem);
+
+app.use('/register',register);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

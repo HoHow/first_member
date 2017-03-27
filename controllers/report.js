@@ -4,12 +4,12 @@ var model           = new modelreport();
 var items = [];
 module.exports = class controllerReport{
   displayMonth(req,res,next){
-    
-    var month= req.query.month;
+    var year  = req.query.year;
+    var month = req.query.month;
 
-    model.getmonth(month,function(message){
+    model.getmonth(year,month,function(message){
       //抓取message資料
-      res.json({data:message});  
+      res.json({message:message});  
     });
       
      

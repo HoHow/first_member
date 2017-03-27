@@ -5,6 +5,8 @@ var controllerOrder         = require('../controllers/order')
 
 var order = new controllerOrder();
 
-router.post('/',order.insertData);
+router.post('/',order.insertData)
+      .post('/orderlist',order.orderList)
+      .get('/',order.cancelorder)
 
 module.exports = router;

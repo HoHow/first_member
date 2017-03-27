@@ -1,4 +1,4 @@
-var connection  = require('../models/connect');
+var connection  = require('./connect');
 var async = require('async');
 module.exports = class modelOrder{
   createOrder(id,res){
@@ -25,10 +25,21 @@ module.exports = class modelOrder{
   }
 
   orderlist(id,res){
-    connectoin.query('select * from orders where member_id='+memberID+'order by DESC',function(err,result){
+    connection.query('select * from orders where member_id='+id,function(err,result){
       if(err) throw err;
-      
+      if(result == ''){
+        res.json({message:"此會員未有訂單"});
+      }else{
+        res.json(result);
+      }
     });
-    return res.json({message:"查詢成功"});
+    
+  }
+
+  cancel(id,res){
+    connection.query('delete * from orders where id='+id,function(err,result){
+      if(err) throw err;
+      res.json({message:"取消訂單成功"});
+    });
   }
 }

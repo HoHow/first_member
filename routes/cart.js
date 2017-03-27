@@ -6,7 +6,9 @@ var controllerCart        = require('../controllers/cart');
 var cart = new controllerCart();
 
 //購物車新增商品
-router.post('/', cart.insertData);
+router.post('/', cart.insertData)
+      .get('/', cart.cartItem)
+      .post('/:id', cart.delitem)
 
 
 
