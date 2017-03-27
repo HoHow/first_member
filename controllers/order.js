@@ -1,6 +1,6 @@
-var connection      = require('../model/connect');
-var mail            = require('../model/mailer');
-var modelOrder  = require('../model/order');
+var connection      = require('../models/connect');
+var mail            = require('../models/mailer');
+var modelOrder  = require('../models/order');
 // var connection      = require('../model/config');
 var knex = require('knex');
 var date = new Date();

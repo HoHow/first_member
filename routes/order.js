@@ -1,7 +1,7 @@
 var express       = require('express');
-var connection    = require('../model/connect');
+var connection    = require('../models/connect');
 var router        = express.Router();
-var controllerOrder         = require('../controller/order')
+var controllerOrder         = require('../controllers/order')
 
 var order = new controllerOrder();
 

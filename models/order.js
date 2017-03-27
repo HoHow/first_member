@@ -1,4 +1,4 @@
-var connection  = require('../model/connect');
+var connection  = require('../models/connect');
 var async = require('async');
 module.exports = class modelOrder{
   createOrder(id,res){
@@ -27,6 +27,7 @@ module.exports = class modelOrder{
   orderlist(id,res){
     connectoin.query('select * from orders where member_id='+memberID+'order by DESC',function(err,result){
       if(err) throw err;
+      
     });
     return res.json({message:"查詢成功"});
   }

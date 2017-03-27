@@ -1,5 +1,5 @@
 var express     = require('express');
-var connection  = require('../../model/connect');
+var connection  = require('../../models/connect');
 var fs          = require('fs');
 var router      = express.Router();
 

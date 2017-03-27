@@ -1,9 +1,9 @@
 var express     = require('express');
 var mysql       = require('mysql');
-var connection  = require('../../model/connect');
+var connection  = require('../../models/connect');
 
 var router      = express.Router();
-var controllerReport        = require('../../controller/report');
+var controllerReport        = require('../../controllers/report');
 
 var report = new controllerReport();
 

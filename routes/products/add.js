@@ -1,5 +1,5 @@
 var express      = require('express');
-var connection   = require('../../model/connect');
+var connection   = require('../../models/connect');
 var multer       = require('multer');
 var fs           = require('fs');
 var upload       = multer({dest:'uploads/'});

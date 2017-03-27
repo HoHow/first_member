@@ -1,5 +1,5 @@
-var connection = require('../model/connect');
-var modelCart  = require('../model/cart');
+var connection = require('../models/connect');
+var modelCart  = require('../models/cart');
 var knex      = require('../knexfile');
 var model = new modelCart();
 module.exports = class controllerCart{
@@ -8,14 +8,16 @@ module.exports = class controllerCart{
     //商品物件
     var item = {
       product_id:req.body.id,
-      quantity:req.body.tempquantity,
       cart_id:1,
+      quantity:req.body.tempquantity,
       unit_price:req.body.price
     };
     //新增商品
-    model.getSameitem(item,res); 
+    model.postItem(item,function(result){
+      res.json({message:result});
+    }); 
 
-    res.end();
+    
   }; 
 
 

@@ -1,5 +1,5 @@
-var connection      = require('../model/connect');
-var modelreport     = require('../model/report');
+var connection      = require('../models/connect');
+var modelreport     = require('../models/report');
 var model           = new modelreport();
 var items = [];
 module.exports = class controllerReport{
