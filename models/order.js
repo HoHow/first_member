@@ -1,7 +1,7 @@
 var connection  = require('./connect');
 var async = require('async');
 module.exports = class modelOrder{
-  createOrder(id,res){
+  createOrder(id,callback){
     connection.query('select c.member_id,ci.* from cart_item as ci,cart as c where c.id in('+id+')',function(err, result){
       if(err) throw err;
       for(var i=0;i<result.length;i++){
@@ -21,25 +21,25 @@ module.exports = class modelOrder{
       }
     });
     mail();
-    return res.json({message:"訂單成立"});
+    callback("訂單成立");
   }
 
-  orderlist(id,res){
+  orderlist(id,callback){
     connection.query('select * from orders where member_id='+id,function(err,result){
       if(err) throw err;
       if(result == ''){
-        res.json({message:"此會員未有訂單"});
+        callback("此會員未有訂單")
       }else{
-        res.json(result);
+        callback(result);
       }
     });
     
   }
 
-  cancel(id,res){
+  cancel(id,callback){
     connection.query('delete * from orders where id='+id,function(err,result){
       if(err) throw err;
-      res.json({message:"取消訂單成功"});
+      callback("取消訂單成功");
     });
   }
 }

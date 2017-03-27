@@ -23,7 +23,9 @@ module.exports = class controllerCart{
 
   //購物車商品列表
   cartItem(req,res,next){
-    model.getCartItem(res);
+    model.getCartItem(function(message){
+      res.json(message);
+    });
   }
 
 

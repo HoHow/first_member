@@ -31,9 +31,10 @@ module.exports = class modelCart{
   }
 
   //取得商品列表
-  getCartItem(res){
+  getCartItem(callback){
     connection.query('select p.name,ci.* from  products as p,cart as c,cart_item as ci where ci.cart_id=1 and ci.product_id=p.id',function(err, result){
-      return res.json(result);
+      if(err) throw err;
+      callback(result);
     });
   }//getCartItem end
   
