@@ -1,4 +1,4 @@
-var connection      = require('../models/connect');
+var connection      = require('../config/connect');
 var modelreport     = require('../models/report');
 var model           = new modelreport();
 var items = [];

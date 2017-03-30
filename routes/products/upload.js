@@ -1,6 +1,6 @@
 var express      = require('express');
 var mysql        = require('mysql');
-var connection   = require('../../models/connect');
+var connection   = require('../../config/connect');
 var multer       = require('multer');
 var upload       = multer({dest:'uploads/'});
 var moment       = require('moment');

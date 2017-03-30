@@ -1,6 +1,6 @@
 var express       = require('express');
 var mysql         = require('mysql');
-var connection    = require('../models/connect');
+var connection    = require('../config/connect');
 var bodyParser    = require('body-parser');
 var router        = express.Router();
 // router.use(bodyParser.json()); // for parsing application/json

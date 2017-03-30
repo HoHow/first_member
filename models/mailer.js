@@ -1,11 +1,12 @@
 const nodemailer = require('nodemailer');
 
-module.exports = function(result){
-      // create reusable transporter object using the default SMTP transport
+module.exports = function(memberID){
+      
+      //create reusable transporter object using the default SMTP transport
       let transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-              user: 'xxx',
+              user: 'xxx@gmail.com',
               pass: 'xxx'
           }
       });
@@ -13,7 +14,7 @@ module.exports = function(result){
       // setup email data with unicode symbols
       let mailOptions = {
           from: '"購物商城" <wumingho@gmail.com>', // sender address
-          to: 'wumingho@gmail.com', // list of receivers
+          to: memberID, // list of receivers
           subject: '訂單已完成' // Subject line
           // html: '<b>訂購商品如下</b>'+
           //     '<thead><tr><th>商品名稱</th><th>單價</th><th>總價</th></tr></thead>'+

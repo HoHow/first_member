@@ -1,4 +1,3 @@
-var connection = require('../models/connect');
 var modelCart  = require('../models/cart');
 var knex      = require('../knexfile');
 var model = new modelCart();

@@ -1,7 +1,7 @@
-var connection  = require('./connect');
+var connection  = require('../config/connect');
 var async       = require('async');
 var knex        = require('../knexfile');
-var cartItem        = require('./cart_item');
+var cartItem        = require('../config/cart_item');
 var newcart = new cartItem();
 module.exports = class modelCart{
   

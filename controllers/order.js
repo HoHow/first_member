@@ -1,7 +1,5 @@
-var connection      = require('../models/connect');
-var mail            = require('../models/mailer');
+
 var modelOrder  = require('../models/order');
-// var connection      = require('../model/config');
 var knex = require('knex');
 var date = new Date();
 var async = require('async');
@@ -15,7 +13,7 @@ module.exports = class controllerOrder {
       res.json(message)
     });
     
-    //res.end();
+    
   }
   //訂單清單
   orderList(req,res,next){
@@ -26,6 +24,7 @@ module.exports = class controllerOrder {
     });
     
   }
+  //取消訂單
   cancelorder(req,res,next){
     var orderid = req.query.orderid;
 

@@ -1,4 +1,4 @@
-var connection  = require('./connect');
+var connection  = require('../config/connect');
 
 module.exports = class report{
   getmonth(year,month,callback){

@@ -2,7 +2,7 @@ var express    = require('express');
 var mysql      = require('mysql');
 var fs         = require('fs');
 var path       = require('path');
-var connection = require('../models/connect');
+var connection = require('../config/connect');
 var router    = express.Router();
 
 router.get('/:id',function(req, res, next){
