@@ -1,14 +1,12 @@
 
 var knex = require("knex")({
-  //development: {
-    client: 'mysql',
+    client: 'mariasql',
     connection:{
       host     : 'localhost',
-      user     : 'oliver',
-      password : '123456',
+      user     : 'root',
+      password : '',
       database : 'node_project'
     }
- // }
 });
 
 

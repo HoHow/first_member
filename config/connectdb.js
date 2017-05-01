@@ -1,10 +1,10 @@
 var knex = require('knex')({
-  client: 'mysql',
+  client: 'mariasql',
   connection:{
     host     : 'localhost',
-    user     : 'oliver',
-    password : '123456',
-    database : 'node_project'
+    user     : 'root',
+    password : '',
+    db : 'node_project'
   }
 });
 knex.on('query-error',function(obj){

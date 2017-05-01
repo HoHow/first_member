@@ -9,24 +9,24 @@ var index       = require('./routes/index');
 
 // member routes
 var users       = require('./routes/users');
-var modify      = require('./routes/modify');
-var add         = require('./routes/add');
-var upload      = require('./routes/upload');
-var user        = require('./routes/user');
+// var modify      = require('./routes/modify');
+// var add         = require('./routes/add');
+// var upload      = require('./routes/upload');
+// var user        = require('./routes/user');
 
 
 
-var cart        = require('./routes/cart');
-var order       = require('./routes/order');
+// var cart        = require('./routes/cart');
+// var order       = require('./routes/order');
 
 
-var productitem = require('./routes/products/productitem');
-var report      = require('./routes/admin/monthreport');
+// var productitem = require('./routes/products/productitem');
+// var report      = require('./routes/admin/monthreport');
 
-
+var login       = require('./routes/login');
 var register    = require('./routes/register');
 // product routes
-var product     = require('./routes/products/product');
+//var product     = require('./routes/products/product');
 var app         = express();
 
 // view engine setup
@@ -63,18 +63,18 @@ app.use(function (req, res, next) {
 process.setMaxListeners(0);
 // emitter.setMaxListeners(0);
 
-app.use('/', index);
+// app.use('/', index);
 app.use('/users', users);
-app.use('/user/add', add);
-app.use('/user', modify);
-app.use('/upload',upload);
-app.use('/user',user);
-app.use('/cart',cart);
-app.use('/products',product);
-app.use('/order',order);
-app.use('/admin/report',report);
-app.use('/item',productitem);
-
+// app.use('/user/add', add);
+// app.use('/user', modify);
+// app.use('/upload',upload);
+// app.use('/user',user);
+// app.use('/cart',cart);
+// app.use('/products',product);
+// app.use('/order',order);
+// app.use('/admin/report',report);
+// app.use('/item',productitem);
+app.use('/login',login);
 app.use('/register',register);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

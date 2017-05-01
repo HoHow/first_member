@@ -7,4 +7,4 @@ var member = db.Model.extend({
 });
 
 
-module.exports = member
+module.exports = member;
