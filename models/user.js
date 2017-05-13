@@ -1,6 +1,5 @@
-//var connection  = require('../config/connect');
-var memberdb        = require('../config/memberdb');
-var member  = new memberdb();
+var member = require('../config/memberdb');
+
 var jwt = require('jsonwebtoken');
 module.exports = class user{
   register(user,res){
@@ -15,7 +14,12 @@ module.exports = class user{
 
   login(user,res){
     
-    member.query(function(qb){
+    
+
+
+
+
+    memberdb.query(function(qb){
       qb.where('email','=',user.email).andWhere('password','=',user.password)
     }).fetchAll().then(function(row){
       if(row.toJSON().length === 1){
@@ -47,8 +51,22 @@ module.exports = class user{
       }
     });
   }
+
+  async edit(user, res) {
+    try{
+     
+     let a = await member.getall(user)
+      res.json({'message':'更新成功'})
+    }catch(error){
+      res.json({'message':'更新失敗'})
+    }
+  }
+
 };
 
 function get(info){
   return jwt.sign(info,'goodgoodjob', { expiresIn: 60*60*24*14 });
 }
+
+
+

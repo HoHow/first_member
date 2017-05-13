@@ -1,29 +1,12 @@
 var express   = require('express');
-var mysql     = require('mysql');
-var connection = require('../config/connect')
-var bodyParser = require('body-parser');
-
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/' });
 var router    = express.Router();
+var controllerUser = require('../controllers/user');
+var user = new controllerUser();
 
-router.put('/:id',function(req ,res ,next){
-  var id = req.params.id;
-  var name = req.body.name;
-  var password = req.body.password;
-  var confirm_password = req.body.confirm_password;
+router.put('/', upload.single('file'),user.edit)
 
-  if(password === confirm_password){
-    if(name != ''){
-      connection.query('UPDATE members SET ? WHERE id=?',[{ name: name,password: password },id]);
-      res.json({states:200,message:"更新成功"});
-    }
-  }else{
-    res.json({states:400,message:'密碼與確認密碼不符'});
-  } 
- 
-
- 
-
-});
 
 
 

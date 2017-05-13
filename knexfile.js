@@ -5,7 +5,7 @@ var knex = require("knex")({
       host     : 'localhost',
       user     : 'root',
       password : '',
-      database : 'node_project'
+      db : 'node_project'
     }
 });
 

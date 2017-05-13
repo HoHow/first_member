@@ -9,7 +9,7 @@ var index       = require('./routes/index');
 
 // member routes
 var users       = require('./routes/users');
-// var modify      = require('./routes/modify');
+var modify      = require('./routes/modify');
 // var add         = require('./routes/add');
 // var upload      = require('./routes/upload');
 // var user        = require('./routes/user');
@@ -36,11 +36,13 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit:'50mb'})); 
+app.use(bodyParser.urlencoded({extended:true, limit:'50mb'}));
+
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'upload')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 // Add headers
 app.use(function (req, res, next) {
 
@@ -66,7 +68,7 @@ process.setMaxListeners(0);
 // app.use('/', index);
 app.use('/users', users);
 // app.use('/user/add', add);
-// app.use('/user', modify);
+ app.use('/edit', modify);
 // app.use('/upload',upload);
 // app.use('/user',user);
 // app.use('/cart',cart);
